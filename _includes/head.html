@@ -1,10 +1,18 @@
-<!DOCTYPE HTML>
-{% if site.lang %}
+<!DOCTYPE HTML> {% if site.lang %}
 <html lang="{{ site.lang }}">
 {% else %}
 <html>
 {% endif %}
+
 <head>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TGBBW3X');</script>
+	<!-- End Google Tag Manager -->
+
 	<meta charset="utf-8">
 
 	<!-- http://t.co/dKP3o1e -->
@@ -21,6 +29,5 @@
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/code.css" type="text/css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="{{ site.baseurl }}/js/slash.js" async></script>
-		{% seo %}
-  	{% include google_analytics.html %}
+	{% seo %} {% include google_analytics.html %}
 </head>
