@@ -9,6 +9,14 @@
 		<div class="col">
 			<nav id="main-nav">
 				<ul class="nav justify-content">
+					{% for page in site.pages %}
+					{% if page.in_nav %}
+						<li class="nav-item">
+							<a class="nav-link text-dark" href="{{ page.url | prepend: site.baseurl }}">{{ page.nav_title }}</a>
+						</li>
+					{% endif %}
+					{% endfor %}
+
 					<li class="nav-item">
 						<a class="nav-link text-dark" href="{{ site.baseurl }}/about/">About</a>
 					</li>
