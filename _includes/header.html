@@ -1,24 +1,27 @@
-<header>
-	<div class="profilepic">
-		{% if site.gravatar_url %}
-		<img src="{{ site.gravatar_url }}?s=160" alt="Profile Picture" style="width: 160px;" /> {% endif %}
-	</div>
-	<hgroup>
-		<h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-		{% if site.subtitle %}
-		<h2>{{ site.subtitle }}</h2>
-		{% endif %}
-	</hgroup>
-	<nav id="main-nav">{% include navigation.html %}</nav>
-	<nav id="sub-nav">
-		<div class="social">
-			{% if site.email %}
-			<a class="email" href="mailto:{{ site.email }}" title="Email">Email</a> {% endif %} {% if site.twitter_user %}
-			<a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter">Twitter</a> {% endif %} {% if site.github_user
-			%}
-			<a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub">GitHub</a> {% endif %} {% if site.subscribe_rss
-			%}
-			<a class="rss" href="{{ site.subscribe_rss }}" title="RSS">RSS</a> {% endif %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1><a href="{{ site.baseurl }}/" class="text-dark">The 73rd Page</a></h1>
 		</div>
-	</nav>
-</header>
+	</div>
+	<hr />
+	<div class="row">
+		<div class="col">
+			<nav id="main-nav">
+				<ul class="nav justify-content">
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="{{ site.baseurl }}/about/">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="{{ site.baseurl }}/blog/">Blog</a>
+					</li>
+					{% if site.feature_toggles.show_contact_link %}
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="https://github.com/703group/The-Bear-and-the-Frog/issues/new">Contact</a>
+					</li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
