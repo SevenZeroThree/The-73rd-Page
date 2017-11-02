@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Test Post From a Folder"
+title: "Test Politics Post"
 date: 2016-08-04
-categories: [test]
+categories: [politics]
 ---
 
 This post is in a folder
