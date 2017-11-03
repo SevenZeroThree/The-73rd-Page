@@ -10,14 +10,14 @@ layout: default
 
 <div class="row">
     <div class="col-sm-9">
-        {% assign lead_post = posts | where: "lead", true | limit: 1 %}
+        {% assign lead_post = posts | where: "lead", true %}
         {% if lead_post.size > 0 %}
             <div class="row">
                 <div class="col" itemscope="" itemtype="http://schema.org/Blog">
                     <h4 class="text-uppercase font-weight-light">The Lead</h4>
                     <hr />
                     
-                    {% for post in lead_post %}
+                    {% for post in lead_post limit:1 %}
                         <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
                             <h6 class="text-uppercase">
                                 <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
@@ -34,8 +34,8 @@ layout: default
             <div class="col" itemscope="" itemtype="http://schema.org/Blog">
                 <h4 class="text-uppercase font-weight-light">Featured</h4>
                 <hr />
-                {% assign featured_posts = posts | where: "featured", true | limit: 4 %}
-                {% for post in featured_posts %}
+                {% assign featured_posts = posts | where: "featured", true  %}
+                {% for post in featured_posts limit: 4 %}
                     <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
                         <h6 class="text-uppercase">
                             <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
