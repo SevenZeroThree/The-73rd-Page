@@ -7,16 +7,36 @@ layout: default
 
 <div class="row">
     <div class="col-sm-9">
-        <h4>Featured</h4>
-        <hr />
-        {% for post in posts %}
-            <h1>{{post.title}}</h1>
-        {% endfor %}
+        {% assign lead_post = posts | where: "lead", true | limit: 1 %}
+        {% if lead_post.size > 0 %}
+            <div class="row">
+                <div class="col">
+                    <h4>The Lead</h4>
+                    <hr />
+                    
+                    {% for post in lead_post %}
+                        <h6>{{post.title}}</h6>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
+        <div class="row">
+            <div class="col">
+                <h4>Featured</h4>
+                <hr />
+                {% assign featured_posts = posts | where: "featured", true | limit: 4 %}
+                {% for post in featured_posts %}
+                    <h6>{{post.title}}</h6>
+                {% endfor %}
+            </div>
+        </div>
     </div>
     <div class="col-sm-3">
         <h4>Latest Posts</h4>
         <hr />
-        {% for post in posts %}
+        {% assign latest_posts = posts | limit:5 %}
+        {% for post in latest_posts %}
             <h6>{{post.title}}</h6>
             <hr />
         {% endfor %}
