@@ -2,8 +2,11 @@
 layout: default
 ---
 
+{% if page.category %}
 {% assign posts = site.categories[page.category] %}
-
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
 
 <div class="row">
     <div class="col-sm-9">
@@ -35,13 +38,14 @@ layout: default
     <div class="col-sm-3">
         <h4 class="text-uppercase font-weight-light">The Latest</h4>
         <hr />
-        {% assign latest_posts = posts | limit:5 %}
-        {% for post in latest_posts %}
-            <a href="{{ post.url | prepend: site.baseurl }}">
-                <h6 class="text-uppercase">{{post.title}}</h6>
-            </a>
-            <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
-            <hr />
+        {% for post in posts | limit: 5 %}
+            <article>
+                <a href="{{ post.url | prepend: site.baseurl }}">
+                    <h6 class="text-uppercase">{{post.title}}</h6>
+                </a>
+                <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
+                <hr />
+            </article>
         {% endfor %}
         <a href="more" class="btn btn-outline-dark">All</a>
     </div>
