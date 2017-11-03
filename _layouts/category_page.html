@@ -41,6 +41,6 @@ layout: default
             <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
             <hr />
         {% endfor %}
-        <button class="btn btn-outline-dark">All</button>
+        <a href="more" class="btn btn-outline-dark">All</a>
     </div>
 </div>
