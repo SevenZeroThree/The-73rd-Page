@@ -18,13 +18,17 @@ layout: default
                     <hr />
                     
                     {% for post in lead_post limit:1 %}
-                        <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
-                            <h6 class="text-uppercase">
-                                <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        {% capture thumbnail %}{% if post.thumbnail_image %}{{ post.thumbnail_image }}{% else %}/images/noimage2.jpg{% endif %}{% endcapture %}
+                        <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                            <figure class="figure">
+                                <img src="{{ thumbnail | prepend: site.baseurl}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
+                                <figcaption class="figure-caption">
                                     {{post.title}}
-                                </a> 
-                            </h6>
-                        </article>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </article>
                     {% endfor %}
                 </div>
             </div>
