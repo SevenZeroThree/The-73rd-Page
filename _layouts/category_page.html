@@ -2,4 +2,24 @@
 layout: default
 ---
 
-{{ content }}
+{% assign posts = site.categories[page.category] %}
+
+
+<div class="row">
+    <div class="col-sm-9">
+        <h4>Featured</h4>
+        <hr />
+        {% for post in posts %}
+            <h1>{{post.title}}</h1>
+        {% endfor %}
+    </div>
+    <div class="col-sm-3">
+        <h4>Latest Posts</h4>
+        <hr />
+        {% for post in posts %}
+            <h6>{{post.title}}</h6>
+            <hr />
+        {% endfor %}
+        <button class="btn btn-outline-dark">All</button>
+    </div>
+</div>
