@@ -12,7 +12,7 @@
 					{% assign nav_pages = site.pages | where: "in_nav", true | sort: 'navigation.position'%}
 					{% for page in nav_pages %}
 					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
+						<a class="nav-link text-dark pl-0" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
 					</li>
 					{% endfor %}
 				</ul>
