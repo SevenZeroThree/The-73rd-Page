@@ -9,6 +9,7 @@ url: https://sevenzerothree.github.io/
 baseurl: /The-73rd-Page
 gravatar_url: https://2.gravatar.com/avatar/d531eea053a5963f5463037fc7732a2e
 google_tag_manager_id: GTM-TGBBW3X
+include_lead_post: false
 
 # Github repositories
 github_user: sevenzerothree
