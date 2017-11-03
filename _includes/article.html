@@ -1,3 +1,46 @@
-<h1 class="title" itemprop="name">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
-{% include post/meta.html %}
-<div class="entry-content" itemprop="articleBody">{{ content }}</div>
+<div class="row">
+    <div class="col">
+        <samp>
+            <time datetime="{{ page.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %e, %Y" }}</time>
+        </samp>
+        <h1 class="title" itemprop="name">
+            {% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}
+        </h1>
+        <samp>
+            <ul class="list-unstyled">
+                <li>By: {% if page.author %} {{ page.author }} {% else %} {{ site.author }} {% endif %}</li>
+                <li>{{ page.sub_category | titlecase }}</li>
+            </ul>
+        </samp>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {% unless page.sharing == false %}
+        {% include post/sharing.html %}
+        {% endunless %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div itemprop="articleBody">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {% unless page.sharing == false %}
+        {% include post/sharing.html %}
+        {% endunless %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h6>Contact the Author: <a href="#">Email</a> or <a href="#">Twitter</a></h6>
+    </div>
+</div>
