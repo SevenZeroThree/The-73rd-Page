@@ -3,7 +3,13 @@
         <div class="col">
             <h5 class="text-light">The 73rd Page</h5>
             <hr />
-
+            <nav>
+				<ul class="nav justify-content">
+					<li class="nav-item">
+						<a class="nav-link text-light" href="{{ page.url | prepend: site.baseurl }}">{{ page.navigation.title }}</a>
+					</li>
+				</ul>
+			</nav>
         </div>
     </div>
     <div class="row">
