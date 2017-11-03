@@ -50,7 +50,7 @@ layout: default
     <div class="col-sm-3" itemscope="" itemtype="http://schema.org/Blog">
         <h4 class="text-uppercase font-weight-light">The Latest</h4>
         <hr />
-        {% for post in posts | limit: 5 %}
+        {% for post in posts limit: 5 %}
             <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <h6 class="text-uppercase">
                     <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
@@ -61,6 +61,12 @@ layout: default
                 <hr />
             </article>
         {% endfor %}
+
+        {% if page.category %}
         <a href="more" class="btn btn-outline-dark">All</a>
+        {% else %}
+        <a href="{{ '/articles' | prepend: site.baseurl }}" class="btn btn-outline-dark">All</a>
+        {% endif %}
+        
     </div>
 </div>
