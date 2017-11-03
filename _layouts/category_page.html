@@ -37,7 +37,9 @@ layout: default
         <hr />
         {% assign latest_posts = posts | limit:5 %}
         {% for post in latest_posts %}
-            <h6 class="text-uppercase">{{post.title}}</h6>
+            <a href="{{ post.url | prepend: site.baseurl }}">
+                <h6 class="text-uppercase">{{post.title}}</h6>
+            </a>
             <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
             <hr />
         {% endfor %}
