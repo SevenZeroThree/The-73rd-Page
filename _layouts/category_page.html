@@ -29,23 +29,22 @@ layout: default
             <div class="col" itemscope="" itemtype="http://schema.org/Blog">
                 <h4 class="text-uppercase font-weight-light">Featured</h4>
                 <hr />
-                <div class="row">
-                    {% assign featured_posts = posts | where: "featured", true  %}
-                    {% for post in featured_posts limit: 2 %}
-                        <div class="col">
-                            {% include featured_article.html %}
-                        </div>
-                    {% endfor %}
-                </div>
+                
+                {% assign featured_posts = posts | where: "featured", true  %}
+                {% for post in featured_posts limit: site.featured_posts_to_show %}
+                    {% assign post_mod = forloop.index | modulo: 2 %}
+                    {% if post_mod == 1 %}
+                    <div class="row">
+                    {% endif %}
 
-                <div class="row">
-                        {% assign featured_posts = posts | where: "featured", true  %}
-                        {% for post in featured_posts limit: 2 offset: 2 %}
-                            <div class="col">
-                                {% include featured_article.html %}
-                            </div>
-                        {% endfor %}
+                    <div class="col">
+                        {% include featured_article.html %}
                     </div>
+                    
+                    {% if post_mod == 0 or forloop.last %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
