@@ -2,6 +2,23 @@
 layout: default
 ---
 
-{% for post in site.categories[page.category] %}
-	{% include archive_post.html %}
-{% endfor %}
+{% if page.category %}
+{% assign posts = site.categories[page.category] %}
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
+
+<div class="row">
+    <div class="col" itemscope="" itemtype="http://schema.org/Blog">
+        {% for post in posts %}
+            <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <h1 itemprop="name">
+                    <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title }}</a>
+                </h1>
+                <div>
+                    {{post.excerpt}}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</div>
