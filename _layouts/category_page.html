@@ -19,17 +19,7 @@ layout: default
                         <hr />
                         
                         {% for post in lead_post limit:1 %}
-                        <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
-                            {% capture thumbnail %}{% if post.thumbnail_image %}{{ post.thumbnail_image }}{% else %}/images/noimage2.jpg{% endif %}{% endcapture %}
-                            <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
-                                <figure class="figure">
-                                    <img src="{{ thumbnail | prepend: site.baseurl}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
-                                    <figcaption class="figure-caption">
-                                        {{post.title}}
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </article>
+                            {% include featured_article.html %}
                         {% endfor %}
                     </div>
                 </div>
@@ -43,17 +33,7 @@ layout: default
                     {% assign featured_posts = posts | where: "featured", true  %}
                     {% for post in featured_posts limit: 2 %}
                         <div class="col">
-                            <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
-                                {% capture thumbnail %}{% if post.thumbnail_image %}{{ post.thumbnail_image }}{% else %}/images/noimage2.jpg{% endif %}{% endcapture %}
-                                <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
-                                    <figure class="figure">
-                                        <img src="{{ thumbnail | prepend: site.baseurl}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
-                                        <figcaption class="figure-caption">
-                                            {{post.title}}
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </article>
+                            {% include featured_article.html %}
                         </div>
                     {% endfor %}
                 </div>
@@ -62,17 +42,7 @@ layout: default
                         {% assign featured_posts = posts | where: "featured", true  %}
                         {% for post in featured_posts limit: 2 offset: 2 %}
                             <div class="col">
-                                <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
-                                    {% capture thumbnail %}{% if post.thumbnail_image %}{{ post.thumbnail_image }}{% else %}/images/noimage2.jpg{% endif %}{% endcapture %}
-                                    <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
-                                        <figure class="figure">
-                                            <img src="{{ thumbnail | prepend: site.baseurl}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
-                                            <figcaption class="figure-caption">
-                                                {{post.title}}
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </article>
+                                {% include featured_article.html %}
                             </div>
                         {% endfor %}
                     </div>
