@@ -13,7 +13,7 @@ layout: default
         {% assign lead_post = posts | where: "lead", true | limit: 1 %}
         {% if lead_post.size > 0 %}
             <div class="row">
-                <div class="col">
+                <div class="col" itemscope="" itemtype="http://schema.org/Blog">
                     <h4 class="text-uppercase font-weight-light">The Lead</h4>
                     <hr />
                     
@@ -31,7 +31,7 @@ layout: default
         {% endif %}
         
         <div class="row">
-            <div class="col">
+            <div class="col" itemscope="" itemtype="http://schema.org/Blog">
                 <h4 class="text-uppercase font-weight-light">Featured</h4>
                 <hr />
                 {% assign featured_posts = posts | where: "featured", true | limit: 4 %}
@@ -47,7 +47,7 @@ layout: default
             </div>
         </div>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3" itemscope="" itemtype="http://schema.org/Blog">
         <h4 class="text-uppercase font-weight-light">The Latest</h4>
         <hr />
         {% for post in posts | limit: 5 %}
