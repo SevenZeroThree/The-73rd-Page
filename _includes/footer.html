@@ -3,6 +3,7 @@
         <div class="col">
             <h5>The 73rd Page</h5>
             <hr class="border-secondary m-0" />
+            {% if site.include_footer_nav %}
             <nav>
 				<ul class="nav justify-content">
 					{% assign nav_pages = site.pages | where: "in_footer_nav", true | sort: 'navigation.position'%}
@@ -12,7 +13,8 @@
 					</li>
 					{% endfor %}
 				</ul>
-			</nav>
+            </nav>
+            {% endif %}
         </div>
     </div>
     <div class="row">
