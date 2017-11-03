@@ -1,14 +1,14 @@
-<div class="container text-light">
+<div class="container text-white font-weight-light">
     <div class="row">
         <div class="col">
             <h5>The 73rd Page</h5>
-            <hr />
+            <hr class="border-secondary" />
             <nav>
 				<ul class="nav justify-content">
 					{% assign nav_pages = site.pages | where: "in_footer_nav", true | sort: 'navigation.position'%}
 					{% for page in nav_pages %}
 					<li class="nav-item">
-						<a class="nav-link text-light" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
+						<a class="nav-link text-light pl-0" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
 					</li>
 					{% endfor %}
 				</ul>
