@@ -9,27 +9,12 @@
 		<div class="col">
 			<nav id="main-nav">
 				<ul class="nav justify-content">
-					{% assign nav_pages = site.pages | where: "navigation" %}
-					{% assign default_paths = site.pages | map: "path" %}
-					{% for page in site.pages | sort: 'navigation.position' %}
-					{% if page.navigation %}
-						<li class="nav-item">
-							<a class="nav-link text-dark" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
-						</li>
-					{% endif %}
+					{% assign nav_pages = site.pages | where: "in_nav", true | sort: 'navigation.position'%}
+					{% for page in nav_pages %}
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
+					</li>
 					{% endfor %}
-
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ site.baseurl }}/about/">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="{{ site.baseurl }}/blog/">Blog</a>
-					</li>
-					{% if site.feature_toggles.show_contact_link %}
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="https://github.com/703group/The-Bear-and-the-Frog/issues/new">Contact</a>
-					</li>
-					{% endif %}
 				</ul>
 			</nav>
 		</div>
