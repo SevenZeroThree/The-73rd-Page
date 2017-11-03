@@ -11,7 +11,7 @@ layout: default
         {% if lead_post.size > 0 %}
             <div class="row">
                 <div class="col">
-                    <h4>The Lead</h4>
+                    <h4 class="text-uppercase font-weight-light">The Lead</h4>
                     <hr />
                     
                     {% for post in lead_post %}
@@ -23,7 +23,7 @@ layout: default
         
         <div class="row">
             <div class="col">
-                <h4>Featured</h4>
+                <h4 class="text-uppercase font-weight-light">Featured</h4>
                 <hr />
                 {% assign featured_posts = posts | where: "featured", true | limit: 4 %}
                 {% for post in featured_posts %}
@@ -33,11 +33,12 @@ layout: default
         </div>
     </div>
     <div class="col-sm-3">
-        <h4>Latest Posts</h4>
+        <h4 class="text-uppercase font-weight-light">The Latest</h4>
         <hr />
         {% assign latest_posts = posts | limit:5 %}
         {% for post in latest_posts %}
-            <h6>{{post.title}}</h6>
+            <h6 class="text-uppercase">{{post.title}}</h6>
+            <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
             <hr />
         {% endfor %}
         <button class="btn btn-outline-dark">All</button>
