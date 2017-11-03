@@ -15,7 +15,13 @@ layout: default
                                         </h1>
                                         <samp>
                                         <ul class="list-unstyled">
-                                                <li>By: {% if page.author %} {{ page.author }} {% else %} {{ site.author }} {% endif %}</li>
+                                                {% if page.author %} 
+                                                        {% assign post_author = page.author %}
+                                                {% else %} 
+                                                        {% assign post_author = site.default_author %}
+                                                {% endif %}
+                                                
+                                                <li>By: {{ site.data.authors[post_author].name }}</li>
                                                 <li>{{ page.tags[0] }}</li>
                                         </ul>
                                         </samp>
