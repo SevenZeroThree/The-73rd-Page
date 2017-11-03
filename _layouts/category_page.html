@@ -18,7 +18,13 @@ layout: default
                     <hr />
                     
                     {% for post in lead_post %}
-                        <h6>{{post.title}}</h6>
+                        <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                            <h6 class="text-uppercase">
+                                <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                                    {{post.title}}
+                                </a> 
+                            </h6>
+                        </article>
                     {% endfor %}
                 </div>
             </div>
@@ -30,7 +36,13 @@ layout: default
                 <hr />
                 {% assign featured_posts = posts | where: "featured", true | limit: 4 %}
                 {% for post in featured_posts %}
-                    <h6>{{post.title}}</h6>
+                    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <h6 class="text-uppercase">
+                            <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                                {{post.title}}
+                            </a> 
+                        </h6>
+                    </article>
                 {% endfor %}
             </div>
         </div>
@@ -39,10 +51,12 @@ layout: default
         <h4 class="text-uppercase font-weight-light">The Latest</h4>
         <hr />
         {% for post in posts | limit: 5 %}
-            <article>
-                <a href="{{ post.url | prepend: site.baseurl }}">
-                    <h6 class="text-uppercase">{{post.title}}</h6>
-                </a>
+            <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <h6 class="text-uppercase">
+                    <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                        {{post.title}}
+                    </a> 
+                </h6>
                 <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
                 <hr />
             </article>
