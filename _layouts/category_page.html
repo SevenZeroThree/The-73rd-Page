@@ -2,4 +2,72 @@
 layout: default
 ---
 
-{{ content }}
+{% if page.category %}
+{% assign posts = site.categories[page.category] %}
+{% else %}
+{% assign posts = site.posts %}
+{% endif %}
+
+<div class="row">
+    <div class="col-sm-9">
+        {% if site.include_lead_post %}
+            {% assign lead_post = posts | where: "lead", true %}
+            {% if lead_post.size > 0 %}
+                <div class="row">
+                    <div class="col" itemscope="" itemtype="http://schema.org/Blog">
+                        <h4 class="text-uppercase font-weight-light">The Lead</h4>
+                        <hr />
+                        
+                        {% for post in lead_post limit:1 %}
+                            {% include featured_article.html %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="row">
+            <div class="col" itemscope="" itemtype="http://schema.org/Blog">
+                <h4 class="text-uppercase font-weight-light">Featured</h4>
+                <hr />
+                
+                {% assign featured_posts = posts | where: "featured", true  %}
+                {% for post in featured_posts limit: site.featured_posts_to_show %}
+                    {% assign post_mod = forloop.index | modulo: 2 %}
+                    {% if post_mod == 1 %}
+                    <div class="row">
+                    {% endif %}
+
+                    <div class="col">
+                        {% include featured_article.html %}
+                    </div>
+                    
+                    {% if post_mod == 0 or forloop.last %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3" itemscope="" itemtype="http://schema.org/Blog">
+        <h4 class="text-uppercase font-weight-light">The Latest</h4>
+        <hr />
+        {% for post in posts limit: 5 %}
+            <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <h6 class="text-uppercase">
+                    <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+                        {{post.title}}
+                    </a> 
+                </h6>
+                <time class="text-uppercase text-muted" datetime="{{ post.date | datetime | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b. %e" }}</time>
+                <hr />
+            </article>
+        {% endfor %}
+
+        {% if page.category %}
+        <a href="more" class="btn btn-outline-dark">More</a>
+        {% else %}
+        <a href="{{ '/articles' | prepend: site.baseurl }}" class="btn btn-outline-dark">All</a>
+        {% endif %}
+        
+    </div>
+</div>

@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "Test Politics Post"
-date: 2016-08-04
+title: "Where Will This Go"
+date: 2016-11-04
 categories: [politics]
-featured: true
 ---
 
 This post is in a folder

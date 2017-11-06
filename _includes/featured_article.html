@@ -1,0 +1,11 @@
+<article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+    {% capture thumbnail %}{% if post.thumbnail_image %}{{ post.thumbnail_image }}{% else %}/images/noimage2.jpg{% endif %}{% endcapture %}
+    <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+        <figure class="figure">
+            <img src="{{ thumbnail | prepend: site.baseurl}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure." />
+            <figcaption class="figure-caption">
+                {{post.title}}
+            </figcaption>
+        </figure>
+    </a>
+</article>

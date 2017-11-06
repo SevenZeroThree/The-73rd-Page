@@ -1,0 +1,25 @@
+<div class="container text-white font-weight-light">
+    <div class="row">
+        <div class="col">
+            <h5>The 73rd Page</h5>
+            <hr class="border-secondary m-0" />
+            {% if site.include_footer_nav %}
+            <nav>
+				<ul class="nav justify-content">
+					{% assign nav_pages = site.pages | where: "in_footer_nav", true | sort: 'navigation.position'%}
+					{% for page in nav_pages %}
+					<li class="nav-item">
+						<a class="nav-link text-light pl-0" href="{{ page.url | prepend: site.baseurl }}" data-position="{{ page.navigation.position }}">{{ page.navigation.title }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p><small>&copy; Copyright 2017 | The 73rd Page</small></p>
+        </div>
+    </div>
+</div>
